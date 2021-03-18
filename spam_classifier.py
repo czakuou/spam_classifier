@@ -36,8 +36,10 @@ word = []
 for w in merged_words:
     if w.isalpha():
         word.append(w)
-    elif w.isalpha() == False:
+    elif not w.isalpha():
         word.append('number')
+
+# TODO: detect URL and e-mail adresses with regular expressions. Next convert them to word "url"
 
 print(word)
 print(merged_words)
