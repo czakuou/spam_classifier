@@ -20,11 +20,9 @@ text = data.readlines()
 words = []
 with open(f'data/{df.columns[0]}/{fil}', "r") as myFile:
     for num, line in enumerate(myFile, 1):
-        # print(line[0:1].strip().lower())
         if not line.strip():
             data_f = text[num:-7]
             for i in data_f:
-                # print(i)
                 words.append(i.split())
 
 # tokenize words
