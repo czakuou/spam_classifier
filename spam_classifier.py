@@ -1,5 +1,7 @@
 import pandas as pd
 import os
+import nltk
+from nltk.tokenize import word_tokenize
 
 # list of files with names
 filenames = next(os.walk('data/names'))[2]
@@ -12,4 +14,22 @@ fil = df['easy_ham_2'][0]
 
 # read file
 data = open(f'data/{df.columns[0]}/{fil}', "r")
-print(data.read())
+text = data.readlines()
+
+# get the context of an email
+words = []
+with open(f'data/{df.columns[0]}/{fil}', "r") as myFile:
+    for num, line in enumerate(myFile, 1):
+        # print(line[0:1].strip().lower())
+        if not line.strip():
+            data_f = text[num:]
+            for i in data_f:
+                # print(i)
+                words.append(i.split())
+
+# tokenize words
+merged_words = []
+for w in words:
+    merged_words += w
+    
+print(merged_words)
