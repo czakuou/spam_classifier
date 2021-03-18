@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 import os
 import nltk
 from nltk.tokenize import word_tokenize
@@ -29,5 +30,14 @@ with open(f'data/{df.columns[0]}/{fil}', "r") as myFile:
 merged_words = []
 for w in words:
     merged_words += w
-    
+
+# convert intigers to word "number"
+word = []
+for w in merged_words:
+    if w.isalpha():
+        word.append(w)
+    elif w.isalpha() == False:
+        word.append('number')
+
+print(word)
 print(merged_words)
